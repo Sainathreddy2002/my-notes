@@ -24,7 +24,7 @@ const NoteDes = ({ newNote, data, pageLoad, setPageLoad }: any) => {
             noteData: notes,
             title: title,
         }
-        axios.post(`${BASE_URL}/apiNotes/createNotes`, payload, { headers: { Authorization: `Bearer ${localStorage.getItem("userInfo")}` } })
+        axios.post(`${BASE_URL}/apiNotes/createNotes`, payload, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
             .then((res: any) => {
                 console.log(res);
             })
@@ -39,7 +39,7 @@ const NoteDes = ({ newNote, data, pageLoad, setPageLoad }: any) => {
             title,
             description: notes
         }
-        axios.put(`${BASE_URL}/apiNotes/updateNotes`, payload, { headers: { Authorization: `Bearer ${localStorage.getItem("userInfo")}` } })
+        axios.put(`${BASE_URL}/apiNotes/updateNotes`, payload, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
             .then((res: any) => {
                 console.log(res);
             })

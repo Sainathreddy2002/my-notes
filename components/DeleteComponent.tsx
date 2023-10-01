@@ -15,7 +15,7 @@ import axios from "axios"
   
   export function DeleteComponent({id,pageLoad, setPageLoad}:any) {
     const onDelete = ()=>{
-        axios.delete(`${BASE_URL}/apiNotes/deleteNote/${id}`,{ headers: { Authorization: `Bearer ${localStorage.getItem("userInfo")}` } })
+        axios.delete(`${BASE_URL}/apiNotes/deleteNote/${id}`,{ headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
         .then((res) => {
             console.log(res);
             setPageLoad(!pageLoad)

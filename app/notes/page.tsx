@@ -21,7 +21,7 @@ const Notes = () => {
       setNoteData(note)
   }
   const getAllNotes = ()=>{
-    axios.get(`${BASE_URL}/apiNotes/getAllNotes`,{headers:{Authorization:`Bearer ${localStorage.getItem("userInfo")}`}})
+    axios.get(`${BASE_URL}/apiNotes/getAllNotes`,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
     .then((res:any)=>{
      setNotes(res.data)
      if(res.data.length>0){
