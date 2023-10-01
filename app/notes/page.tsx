@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import NoteCard from '@/components/NoteCard'
 import NoteDes from '@/components/NoteDes'
@@ -6,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { BASE_URL } from '@/constants'
 import axios from 'axios'
 import moment from 'moment'
+import Cookies from 'universal-cookie'
 import React, { useEffect, useState } from 'react'
 
 const Notes = () => {
@@ -13,6 +15,7 @@ const Notes = () => {
   const [noteData,setNoteData] = useState<any>();
   const [notes,setNotes] = useState<any>([]);
   const [pageLoad,setPageLoad] = useState(false)
+  const cookies = new Cookies();
   const onAddNew = () =>{
     setAddNew(true)
   }
@@ -21,7 +24,7 @@ const Notes = () => {
       setNoteData(note)
   }
   const getAllNotes = ()=>{
-    axios.get(`${BASE_URL}/apiNotes/getAllNotes`,{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
+    axios.get(`${BASE_URL}/apiNotes/getAllNotes`,{headers:{Authorization:`Bearer ${cookies.get('token')}`}})
     .then((res:any)=>{
      setNotes(res.data)
      if(res.data.length>0){

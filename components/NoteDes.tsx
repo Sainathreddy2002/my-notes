@@ -6,13 +6,15 @@ import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
 import axios from 'axios'
 import { BASE_URL } from '@/constants'
-import jwtDecode from 'jwt-decode'
+import Cookies from 'universal-cookie'
 import DeleteComponent from './DeleteComponent'
 
 
 const NoteDes = ({ newNote, data, pageLoad, setPageLoad }: any) => {
     const [title, setTitle] = useState("")
     const [notes, setNotes] = useState("")
+    const cookies = new Cookies();
+    
     const onTitleChange = (e: any) => {
         setTitle(e.target.value)
     }
@@ -24,7 +26,7 @@ const NoteDes = ({ newNote, data, pageLoad, setPageLoad }: any) => {
             noteData: notes,
             title: title,
         }
-        axios.post(`${BASE_URL}/apiNotes/createNotes`, payload, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+        axios.post(`${BASE_URL}/apiNotes/createNotes`, payload, { headers: { Authorization: `Bearer ${cookies.get("token")}` } })
             .then((res: any) => {
                 console.log(res);
             })
@@ -39,7 +41,7 @@ const NoteDes = ({ newNote, data, pageLoad, setPageLoad }: any) => {
             title,
             description: notes
         }
-        axios.put(`${BASE_URL}/apiNotes/updateNotes`, payload, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+        axios.put(`${BASE_URL}/apiNotes/updateNotes`, payload, { headers: { Authorization: `Bearer ${cookies.get("token")}` } })
             .then((res: any) => {
                 console.log(res);
             })
