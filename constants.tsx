@@ -1,1 +1,1 @@
-export const BASE_URL= "http://localhost:8000"
+export const BASE_URL= "https://my-notes-go5o.onrender.com"
