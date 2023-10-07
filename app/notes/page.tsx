@@ -49,15 +49,16 @@ const Notes = () => {
       <ModeToggle />
       </div>
       </div>
-      <div className='flex-row flex justify-between w-full h-full m-1'>
-        <div className='shadow-zinc-400 bg-slate-300  rounded-2xl shadow-lg m-10 p-4 w-1/3 dark:shadow-white dark:bg-[#1C1A27] '>
+      <div className='flex-col flex justify-between w-full h-full m-1 sm:flex-col lg:flex-row xl:flex-row 2xl:flex-row'>
+        <div className='shadow-zinc-400 bg-slate-300  rounded-2xl sm:w-full md:w-full lg:w-1/3 xl:w-1/3 2xl:w-1/3 shadow-lg m-10 p-4 w-full dark:shadow-white dark:bg-[#1C1A27] '>
          <div className='text-xl flex-row items-center flex justify-between w-full'>
           <div>All Notes</div>
           <Button onClick={onAddNew}>Add New</Button>
          </div>
+         <div className='flex flex-1 flex-row'>
         {notes.length>0? notes.map((note:any)=>{
           return (
-            <div key={note.noteId} className='border-2 border-[#908d96] p-1 m-[10px] rounded-md cursor-pointer flex-row flex-1 flex justify-between items-center' onClick={()=>{handleNoteClick(note)}}>
+            <div key={note.noteId} className='border-2 border-[#908d96] p-1 m-[10px] rounded-md cursor-pointer flex-col w-1/4 sm:flex-col sm:w-1/6 md:w-1/6 md:flex-col lg:flex-row lg:w-full xl:flex-row 2xl:flex-row  flex justify-between items-center' onClick={()=>{handleNoteClick(note)}}>
             <div>
             {note.title}
             </div>
@@ -69,6 +70,7 @@ const Notes = () => {
           )
         }) 
         : null}
+        </div>
         </div>
         <div className='shadow-zinc-400 bg-slate-300 rounded-2xl shadow-lg m-10 p-4 w-2/3 dark:shadow-white dark:bg-[#1C1A27] flex-1 '>
         <div className='flex-1 h-full w-full'>
